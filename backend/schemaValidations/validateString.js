@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
-const regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%^&*])[\S]{8,16}$/;
+const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[.!@#$%^&*])[\S]{8,16}$/;
 const regexNombre = /^[a-zA-Z\s]+$/;
 const userSchema = z.object({
   name: z.string()
-    .min(6)
-    .regex(regexNombre, { message: 'error3' }),
-
+    .min(6, { message: 'error1' })
+    .regex(regexNombre, 'error1'),
   email: z.string().email({
-    message: 'El correo debe ser un correo valido'
+    message: 'error2'
   }),
-  password: z.string().regex(regexPassword, { message: 'error3' })
+
+  password: z.string().regex(regex, { message: 'error3' })
 
 });
 

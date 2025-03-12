@@ -1,9 +1,15 @@
 import express from 'express';
-import { registerUser } from '../controllers/userController.js';
+import { registerUser, loginUser } from '../controllers/userController.js';
 export const routerRegister = express.Router();
 
+// Ruta Registro
 routerRegister.get('/', (req, res) => {
-  res.render('index.ejs');
+  res.render('register.ejs');
 });
-
 routerRegister.post('/', registerUser);
+
+// Ruta Login
+routerRegister.get('/login', (req, res) => {
+  res.render('login.ejs');
+});
+routerRegister.post('/login', loginUser);

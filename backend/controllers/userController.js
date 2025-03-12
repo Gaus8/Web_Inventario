@@ -1,0 +1,46 @@
+import { validateLoginUser, validateRegisterUser } from '../schemaValidations/validateString.js';
+import bcrypt from 'bcrypt';
+import User from '../schema/userSchema.js'
+
+export const registerUser = async (req, res) => {
+  const validar = validateRegisterUser(req.body);
+  if (validar.error) {
+    return res.status(400).json({
+      status: 'error',
+      error: JSON.parse(validar.error.message)
+    });
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(validar.data.password, 10);
+    const newUser = {
+      name: validar.data.name,
+      email: validar.data.email,
+      password: hashedPassword
+    };
+
+    const sendMessage = await createUser(newUser);
+
+    res.status(201).json({
+      status: 'success',
+      message: sendMessage,
+      name: newUser.name
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: 'error',
+      message: error.message
+    });
+  }
+};
+
+const createUser = async (user) => {
+  const findUser = await User.findOne({ email: user.email });
+  if (findUser) {
+    throw new Error('ERROR: CORREO YA REGISTRADO!');
+  }
+  const create = await User.create(user);
+  if (create) {
+    return 'USUARIO REGISTRADO EXITOSAMENTE';
+  }
+};

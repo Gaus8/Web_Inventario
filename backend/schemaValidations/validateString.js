@@ -9,11 +9,7 @@ const userSchema = z.object({
 
   email: z.string().email({
     message: 'El correo debe ser un correo valido'
-  }).refine(
-    (email) => email.endsWith('@ucundinamarca.edu.co'), {
-      message: 'error2'
-    }
-  ),
+  }),
   password: z.string().regex(regexPassword, { message: 'error3' })
 
 });

@@ -81,9 +81,18 @@ h3 {
 }
 
 p{
-  font-size: clamp(0.5rem, 2vw, 1rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   text-align: center;
   color: #ee364bc9;
+}
+
+a{
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: rgb(98, 149, 230);
+}
+
+a:hover {
+  border-bottom: 2px solid white;
 }
 
 button {

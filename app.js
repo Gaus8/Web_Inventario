@@ -12,6 +12,10 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use('/', routerRegister);
 
+app.get('/', (req, res) => {
+  res.render('main.ejs');
+});
+
 const PORT = process.env.PORT || 5000;
 
 

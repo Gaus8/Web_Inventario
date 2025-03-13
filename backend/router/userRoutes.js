@@ -3,7 +3,7 @@ import { registerUser, loginUser } from '../controllers/userController.js';
 export const routerRegister = express.Router();
 
 // Ruta Registro
-routerRegister.get('/', (req, res) => {
+routerRegister.get('/register', (req, res) => {
   res.render('register.ejs');
 });
 routerRegister.post('/', registerUser);

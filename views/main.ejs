@@ -3,34 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles_main_page.css">
   <title>AMG</title>
 </head>
 <body>
-  <nav class="navigatiov-bar">
-    <img src="/img/logo_amg.jpg" alt="">
-    <ul>
-      <li class="nav-item">
-        <a href="#">Home</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">About</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Iniciar Sesion</a>
-      </li>
-      <li class="nav-item">
-        <a href="#">Contacto</a>
-      </li>
-    </ul>
-    
-  </nav>
+  <header>
+      <div class="logo-img">
+        <img src="/img/logo_amg.jpg" alt="">
+      </div>
+      <input type="checkbox" id="check">
+      <label for="check" class="show-menu">&#8801</label>
+      <nav class="navbar">
+          <a href="#">Inicio</a>
+          <a href="#section-products">Sobre Nosotros</a>
+          <a href="#section-icons">Info</a>
+          <a href="#">Contacto</a>
+      <label for="check" class="hide-menu">&#215</label>
+    </nav>
+</header>
   <section class="section-info">
     <div class="section-info-text">
-      <h1>Aplicativo Moderno de Gestión (AMG)</h1>
-      <p>lorem ipsum</p>
-      <button class="" submit="/register">Registrarse</button>
+      <h1>Aplicativo Moderno <br>de Gestión del Inventario <br> (AMG)</h1>
+      <p>Desarrollar una aplicación web destinada a mejorar la gestión de inventario,<br>
+         para aumentar la productividad en los pequeños sectores comerciales, <br>
+         específicamente en la empresa CDISFRUTA ubicada en la Villa de San Diego de Ubaté. </p>
+      <form action="/register">
+        <button class="btn-login" type="submit" >Empezar</button>
+      </form>
+      
+    </div>
+    <div class="section-info-img">
     </div>
   </section>
-  
+  <section id="section-products">
+    <div>
+      <img src="/img/cdisfruta_01.jpg" alt="">
+      <h4>CDISFRUTA EN MELBOURNE</h4>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>
+        Quidem velit dolorem voluptate qui necessitatibus quisquam hic?<br>
+         Est vero voluptate dolores fuga incidunt. Id odio adipisci
+          sapiente temporibus atque, aperiam earum.</p>
+    </div>
+    <div>
+      <img src="/img/cdisfruta_02.jpg" alt="">
+      <h4>FRUTAS DESHIDRATADAS</h4>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>
+        Quidem velit dolorem voluptate qui necessitatibus quisquam hic?<br>
+         Est vero voluptate dolores fuga incidunt. Id odio adipisci
+          sapiente temporibus atque, aperiam earum.</p>
+    </div>
+    <div>
+      <img src="/img/cdisfruta_03.jpg" alt="">
+      <h4>CDISFRUTA UBATÉ</h4>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>
+        Quidem velit dolorem voluptate qui necessitatibus quisquam hic?<br>
+         Est vero voluptate dolores fuga incidunt. Id odio adipisci
+          sapiente temporibus atque, aperiam earum.</p>
+    </div>
+    <div>
+      <img src="/img/cdisfruta_04.jpg" alt="">
+      <h4>BOLSITAS CDISFRUTA</h4>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>
+        Quidem velit dolorem voluptate qui necessitatibus quisquam hic?<br>
+         Est vero voluptate dolores fuga incidunt. Id odio adipisci
+          sapiente temporibus atque, aperiam earum.</p>
+    </div>
+  </section>
+  <section id="section-icons">
+      <div>
+        <h3 class="icon-text">Aplicación Responsive</h3>
+        <ion-icon name="laptop-outline"></ion-icon>
+      </div>
+      <div>
+        <h3 class="icon-text">Procesos</h3>
+        <ion-icon name="timer-outline"></ion-icon>
+      </div>
+      <div>
+        <h3 class="icon-text">Modenizacion</h3>
+        <ion-icon name="globe-outline"></ion-icon>
+      </div>
+      <div>
+        <h3 class="icon-text">Rendimiento</h3>
+        <ion-icon name="trending-up-outline"></ion-icon>
+      </div>
+  </section>
+  <footer>
+    <div class="footer-info">
+      <div>
+        <ion-icon class="footer-icons" name="location-outline"></ion-icon>
+        <p>Ubaté, Cundinamarca</p>
+      </div>
+      <div>
+        <ion-icon class="footer-icons" name="call-outline"></ion-icon>
+        <p>3007108920</p>
+      </div>
+      <div>
+        <ion-icon class="footer-icons" name="mail-outline"></ion-icon>
+        <p>cdifruta@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer-social">
+      <h3>Acerca de CDISFRUTA</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>
+         Reprehenderit exercitationem et temporibus aut placeat illum minus unde harum aliquid.
+    </div>
+
+  </footer>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

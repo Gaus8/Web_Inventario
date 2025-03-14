@@ -275,8 +275,4 @@ footer{
     align-items: center;
     grid-template-columns: repeat(2,1fr);
   }
-  #section-icons div{
-    border-bottom: 2px solid #0e163f;
-    border-left:  2px solid #0e163f;
-  }
 }

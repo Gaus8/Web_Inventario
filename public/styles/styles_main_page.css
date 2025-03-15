@@ -167,6 +167,7 @@ img{
   grid-template-columns: repeat(4,1fr);
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 }
 
 #section-icons div{

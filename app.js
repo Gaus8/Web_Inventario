@@ -8,9 +8,15 @@ connectionDb();
 
 const app = express();
 app.use(cookieParser());
+
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/', routerRegister);
+
+
 
 app.get('/', (req, res) => {
   res.render('main.ejs');
@@ -19,7 +25,12 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000;
 
 
-app.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
+const startServer = async () => {
+  await connectionDb(); // Asegurarte de esperar la conexión
+  app.listen(PORT, () => {
+    console.log(`http://localhost:${PORT}`);
+  });
+};
+
+startServer();
 

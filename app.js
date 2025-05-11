@@ -4,26 +4,17 @@ import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
+import cors from 'cors';
+
 connectionDb();
 
 const app = express();
 app.use(cookieParser());
-
-app.set('view engine', 'ejs');
-app.set('views', './views');
-
+app.use(cors()); // Aquí invocas correctamente CORS
 app.use(express.json());
-app.use(express.static('public'));
 app.use('/', routerRegister);
 
-
-
-app.get('/', (req, res) => {
-  res.render('main.ejs');
-});
-
 const PORT = process.env.PORT || 5000;
-
 
 const startServer = async () => {
   await connectionDb(); // Asegurarte de esperar la conexión
@@ -33,4 +24,3 @@ const startServer = async () => {
 };
 
 startServer();
-

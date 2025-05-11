@@ -6,8 +6,6 @@ import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
 import cors from 'cors';
 
-connectionDb();
-
 const app = express();
 app.use(cookieParser());
 app.use(cors()); // Aquí invocas correctamente CORS

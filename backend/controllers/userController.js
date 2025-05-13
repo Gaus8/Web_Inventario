@@ -1,4 +1,5 @@
 import { validateLoginUser, validateRegisterUser } from '../schemaValidations/validateString.js';
+import { generarTokenVerificacion, enviarCorreoVerificacion } from '../funciones/validarEmail.js';
 import bcrypt from 'bcrypt';
 import User from '../schema/userSchema.js';
 import jwt from 'jsonwebtoken';
@@ -14,19 +15,23 @@ export const registerUser = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(validar.data.password, 10);
+    const token = generarTokenVerificacion();
     const newUser = {
       name: validar.data.name,
       email: validar.data.email,
-      password: hashedPassword
+      password: hashedPassword,
+      verificationToken: token
     };
 
     const sendMessage = await createUser(newUser);
+    await enviarCorreoVerificacion(newUser, token);
 
     res.status(201).json({
       status: 'success',
       message: sendMessage,
       name: newUser.name
     });
+    await enviarCorreoVerificacion(newUser, token);
   } catch (error) {
     res.status(400).json({
       status: 'error',
@@ -75,6 +80,12 @@ const validateLogin = async (req, res) => {
       message: 'EMAIL NO REGISTRADO'
     });
   }
+  if (!user.verified) {
+    return res.status(403).json({
+      status: 'error',
+      message: 'Debes verificar tu cuenta por correo antes de iniciar sesión.'
+    });
+  }
   const checkPassword = await bcrypt.compare(password, user.password);
 
   if (!checkPassword) {
@@ -90,9 +101,9 @@ const validateLogin = async (req, res) => {
     email: user.email,
     role: user.role
   }, process.env.JWT_TOKEN,
-  {
-    expiresIn: '1h'
-  });
+    {
+      expiresIn: '1h'
+    });
 
   res.cookie('access_token', token, {
     httpOnly: true,
@@ -105,3 +116,22 @@ const validateLogin = async (req, res) => {
     });
 };
 
+export const verificarCuenta = async (req, res) => {
+  const { token } = req.params;
+  try {
+    const user = await User.findOne({ verificationToken: token });
+
+    if (!user) {
+      return res.status(400).send('Token de verificación inválido o expirado.');
+    }
+
+    user.verified = true;
+    user.verificationToken = undefined;
+    await user.save();
+
+    res.redirect('http://localhost:5173/login');
+
+  } catch (err) {
+    res.status(500).send('Error al verificar la cuenta.');
+  }
+};

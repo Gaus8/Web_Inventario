@@ -68,7 +68,7 @@ const validateLogin = async (req, res) => {
   if (validate.error) {
     return res.status(400).json({
       status: 'error',
-      error: JSON.parse(validate.error.message)
+      message: 'Usuario o Contraseña Incorrecta'
     });
   }
   const { email, password } = validate.data;
@@ -130,7 +130,6 @@ export const verificarCuenta = async (req, res) => {
     await user.save();
 
     res.redirect('http://localhost:5173/login');
-
   } catch (err) {
     res.status(500).send('Error al verificar la cuenta.');
   }

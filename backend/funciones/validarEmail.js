@@ -17,12 +17,12 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
   const verificationUrl = `http://localhost:5000/validacion/${token}`;
 
   const mailOptions = {
-    from: '"CDISFRUTA - Plataforma gestionada por AMG" <pruebascdisfruta@gmail.com>',
+    from: '"AMG - Plataforma gestionada a CDISFRUTA" <pruebascdisfruta@gmail.com>',
     to: usuario.email,
     subject: 'Confirmación de correo electronico - Registro en CDIFRUTA',
     html: `
       <p>Estimado(a) ${usuario.name}</p>
-      <p><br>Gracias por registrarse en <b>CDISFRUTA</b>.</br></p>
+      <p><br>Gracias por registrarse en <b>AMG</b>.</br></p>
       <p>Para completar su proceso de registro y activar su cuenta, le solicitamos verificar su dirección de correo electrónico haciendo clic en el siguiente enlace:</p>
       <a href="${verificationUrl}">${verificationUrl}</a>
       <p>Este paso es fundamental para confirmar que la dirección proporcionada es válida y pertenece a usted.</p>

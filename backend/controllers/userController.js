@@ -22,12 +22,9 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
       verificationToken: token
     };
-
- 
+    
     const sendMessage = await createUser(newUser);
     await enviarCorreoVerificacion(newUser, token);
-
-    if()
     res.status(201).json({
       status: 'success',
       message: sendMessage,

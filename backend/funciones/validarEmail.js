@@ -14,7 +14,7 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
     }
   });
 
-  const verificationUrl = `http://localhost:5000/validacion/${token}`;
+  const verificationUrl = `https://web-inventario.onrender.com/${token}`;
 
   const mailOptions = {
     from: '"AMG - Plataforma gestionada a CDISFRUTA" <pruebascdisfruta@gmail.com>',

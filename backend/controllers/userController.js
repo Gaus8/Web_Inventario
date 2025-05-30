@@ -23,15 +23,17 @@ export const registerUser = async (req, res) => {
       verificationToken: token
     };
 
+ 
     const sendMessage = await createUser(newUser);
     await enviarCorreoVerificacion(newUser, token);
 
+    if()
     res.status(201).json({
       status: 'success',
       message: sendMessage,
       name: newUser.name
     });
-    await enviarCorreoVerificacion(newUser, token);
+
   } catch (error) {
     res.status(400).json({
       status: 'error',
@@ -129,7 +131,7 @@ export const verificarCuenta = async (req, res) => {
     user.verificationToken = undefined;
     await user.save();
 
-    res.redirect('http://localhost:5173/login');
+    res.redirect('https://inventario-cdisfruta.netlify.app/login');
   } catch (err) {
     res.status(500).send('Error al verificar la cuenta.');
   }

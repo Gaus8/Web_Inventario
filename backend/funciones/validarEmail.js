@@ -14,7 +14,7 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
     }
   });
 
-  const verificationUrl = `https://inventario-cdisfruta.netlify.app/registro/${token}`;
+  const verificationUrl = `https://inventario-cdisfruta.netlify.app/validacion/${token}`;
 
   const mailOptions = {
     from: '"AMG - Plataforma gestionada a CDISFRUTA" <pruebascdisfruta@gmail.com>',

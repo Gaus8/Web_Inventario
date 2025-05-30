@@ -22,7 +22,7 @@ export const registerUser = async (req, res) => {
       password: hashedPassword,
       verificationToken: token
     };
-    
+
     const sendMessage = await createUser(newUser);
     await enviarCorreoVerificacion(newUser, token);
     res.status(201).json({
@@ -121,15 +121,16 @@ export const verificarCuenta = async (req, res) => {
     const user = await User.findOne({ verificationToken: token });
 
     if (!user) {
-      return res.status(400).send('Token de verificación inválido o expirado.');
+      return res.status(400).json({ mensaje: 'Token de verificación inválido o expirado.' });
     }
 
     user.verified = true;
     user.verificationToken = undefined;
     await user.save();
 
-    res.redirect('https://inventario-cdisfruta.netlify.app/login');
+    // Responder con mensaje JSON, el frontend se encarga de la redirección
+    res.status(200).json({ mensaje: 'Cuenta verificada correctamente.' });
   } catch (err) {
-    res.status(500).send('Error al verificar la cuenta.');
+    res.status(500).json({ mensaje: 'Error al verificar la cuenta.' });
   }
 };

@@ -6,6 +6,14 @@ import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
 import cors from 'cors';
 
+const corsOptions = {
+  origin: 'https://inventario-cdisfruta.netlify.app/',
+  allowedHeaders: 'Content-Type,Authorization',
+  credentials: true
+};
+
+
+
 const app = express();
 app.use(cookieParser());
 app.use(cors()); // Aquí invocas correctamente CORS

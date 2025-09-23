@@ -4,6 +4,7 @@ import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
+import { routerProducts } from './backend/router/productRoutes.js';
 import cors from 'cors';
 
 const corsOptions = {
@@ -19,6 +20,7 @@ app.use(cookieParser());
 app.use(cors()); // Aquí invocas correctamente CORS
 app.use(express.json());
 app.use('/', routerRegister);
+app.use('/', routerProducts);
 
 const PORT = process.env.PORT || 5000;
 

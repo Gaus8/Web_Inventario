@@ -30,7 +30,6 @@ export const registerUser = async (req, res) => {
       message: sendMessage,
       name: newUser.name
     });
-
   } catch (error) {
     res.status(400).json({
       status: 'error',
@@ -49,7 +48,6 @@ const createUser = async (user) => {
     return 'USUARIO REGISTRADO EXITOSAMENTE';
   }
 };
-
 
 export const loginUser = async (req, res) => {
   const { email, password } = req.body;

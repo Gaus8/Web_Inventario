@@ -8,8 +8,8 @@ import { routerProducts } from './backend/router/productRoutes.js';
 import cors from 'cors';
 
 const corsOptions = {
-  origin: 'https://inventario-cdisfruta.netlify.app/',
-  allowedHeaders: 'Content-Type,Authorization',
+  origin: ['https://inventario-cdisfruta.netlify.app', 'http://localhost:5173'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
@@ -19,8 +19,8 @@ const app = express();
 app.use(cookieParser());
 app.use(cors()); // Aquí invocas correctamente CORS
 app.use(express.json());
-app.use('/', routerRegister);
-app.use('/', routerProducts);
+app.use('/api', routerRegister);
+app.use('/api', routerProducts);
 
 const PORT = process.env.PORT || 5000;
 

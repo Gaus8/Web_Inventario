@@ -19,20 +19,20 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
 
 
   const mailOptions = {
-    from: '"AMG - Plataforma gestionada a CDISFRUTA" <pruebascdisfruta@gmail.com>',
+    from: '"SIECU - Plataforma gestionada a CDISFRUTA" <pruebascdisfruta@gmail.com>',
     to: usuario.email,
-    subject: 'Confirmación de correo electronico - Registro en CDIFRUTA',
+    subject: 'Confirmación de correo electronico - Registro en CDISFRUTA',
     html: `
       <p>Estimado(a) ${usuario.name}</p>
-      <p><br>Gracias por registrarse en <b>AMG</b>.</br></p>
+      <p><br>Gracias por registrarse en <b>SIECU</b>.</br></p>
       <p>Para completar su proceso de registro y activar su cuenta, le solicitamos verificar su dirección de correo electrónico haciendo clic en el siguiente enlace:</p>
       <a href="${verificationUrlReact}">${verificationUrlReact}</a>
       <p>Este paso es fundamental para confirmar que la dirección proporcionada es válida y pertenece a usted.</p>
-      <p><br>Este mensaje ha sido enviado por <b>AMG – Aplicativo Moderno de Gestión</b>, plataforma que respalda tecnológicamente el funcionamiento de CDISFRUTA.</br></p>
+      <p><br>Este mensaje ha sido enviado por <b>SIECU – Sistema Integral de E-Commerce</b>, plataforma que respalda tecnológicamente el funcionamiento de CDISFRUTA.</br></p>
       <p>Si usted no ha realizado este registro, puede ignorar este mensaje con toda seguridad.</p>
       <p><br>Agradecemos su confianza.</br></p>
       <p>Atentamente,</p>
-      <p><b>Equipo de Soporte</b> – AMG</p>
+      <p><b>Equipo de Soporte</b> – SIECU</p>
     `
   };
 

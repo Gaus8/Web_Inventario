@@ -96,7 +96,7 @@ const validateLogin = async (req, res) => {
     id: user.id,
     name: user.name,
     email: user.email,
-    role: user.role
+    rol: user.rol
   }, process.env.JWT_TOKEN,
     {
       expiresIn: '1h'

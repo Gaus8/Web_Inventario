@@ -92,16 +92,12 @@ export const updateProduct = async (req, res) => {
   }
 };
 
-// Eliminar producto (borrado lógico)
+// Eliminar producto 
 export const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
     
-    const productoEliminado = await Producto.findByIdAndUpdate(
-      id,
-      { activo: false },
-      { new: true }
-    );
+    const productoEliminado = await Producto.findByIdAndDelete(id);
     
     if (!productoEliminado) {
       return res.status(404).json({ 
@@ -112,8 +108,7 @@ export const deleteProduct = async (req, res) => {
     
     res.status(200).json({ 
       status: 'success',
-      message: 'Producto eliminado correctamente',
-      product: productoEliminado 
+      message: 'Producto eliminado correctamente'
     });
     
   } catch (error) {

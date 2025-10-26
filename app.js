@@ -6,24 +6,27 @@ import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
 import { routerProducts } from './backend/router/productRoutes.js';
 import routerImg from './imagenes.js';
-
 import cors from 'cors';
 
 const corsOptions = {
-  origin: ['https://inventario-cdisfruta.netlify.app', 'http://localhost:5173'],
+  origin: [
+    'https://inventario-cdisfruta.netlify.app', // producción
+    'http://localhost:5173'                     // desarrollo local
+  ],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
-};
-
+};  
 
 
 const app = express();
 app.use(cookieParser());
-app.use(cors()); // Aquí invocas correctamente CORS
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', routerRegister);
 app.use('/api', routerProducts);
 app.use('/api', routerImg)
+
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
@@ -32,5 +35,6 @@ const startServer = async () => {
     console.log(`http://localhost:${PORT}`);
   });
 };
+
 
 startServer();

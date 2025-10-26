@@ -104,7 +104,9 @@ const validateLogin = async (req, res) => {
 
   res.cookie('access_token', token, {
     httpOnly: true,
-    sameSite: 'strict'
+    secure: false,      // false en desarrollo
+    sameSite: 'lax',    // 'lax' o 'strict' en desarrollo
+    maxAge: 24 * 60 * 60 * 1000 // 24 horas
   })
     .status(200).json({
       status: 'success',

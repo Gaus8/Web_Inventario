@@ -1,6 +1,15 @@
 import express from 'express';
-import { registerProducts } from '../controllers/productosControllers.js';
+import { 
+  registerProducts, 
+  getProducts, 
+  updateProduct, 
+  deleteProduct 
+} from '../controllers/productosControllers.js';
 
 export const routerProducts = express.Router();
 
-routerProducts.post('/registro-productos', registerProducts);
+
+routerProducts.get('/productos', getProducts); // Obtener todos
+routerProducts.post('/registro-productos', registerProducts); // Crear
+routerProducts.put('/productos/:id', updateProduct); // Actualizar
+routerProducts.delete('/productos/:id', deleteProduct); // Eliminar

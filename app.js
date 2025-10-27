@@ -26,6 +26,10 @@ app.use('/api', routerRegister);
 app.use('/api', routerProducts);
 app.use('/api', routerImg)
 
+app.post('/api/logout', (req, res) => {
+  res.clearCookie('access_token');
+  res.status(200).json({ message: 'Sesión cerrada' });
+});
 
 const PORT = process.env.PORT || 5000;
 

@@ -5,7 +5,6 @@ import cookieParser from 'cookie-parser';
 import { connectionDb } from './backend/dbConnection.js';
 import { routerRegister } from './backend/router/userRoutes.js';
 import { routerProducts } from './backend/router/productRoutes.js';
-import routerImg from './imagenes.js';
 import cors from 'cors';
 
 const corsOptions = {
@@ -24,7 +23,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/api', routerRegister);
 app.use('/api', routerProducts);
-app.use('/api', routerImg)
+
 
 app.post('/api/logout', (req, res) => {
   res.clearCookie('access_token');

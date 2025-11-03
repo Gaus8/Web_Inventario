@@ -1,5 +1,5 @@
 import { validateLoginUser, validateRegisterUser } from '../schemaValidations/validateString.js';
-import { generarTokenVerificacion, enviarCorreoVerificacion } from '../funciones/validarEmail.js';
+import { generarTokenVerificacion, enviarCorreoVerificacion } from '../middleware/validarEmail.js';
 import bcrypt from 'bcrypt';
 import User from '../schema/userSchema.js';
 import jwt from 'jsonwebtoken';

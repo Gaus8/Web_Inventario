@@ -1,5 +1,10 @@
 import Brevo from "@getbrevo/brevo";
 
+
+export const generarTokenVerificacion = () => {
+  return crypto.randomBytes(32).toString('hex');
+};
+
 export const enviarCorreoVerificacion = async (usuario, token) => {
   const apiInstance = new Brevo.TransactionalEmailsApi();
   apiInstance.setApiKey(

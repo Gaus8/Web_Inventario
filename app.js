@@ -12,6 +12,7 @@ const corsOptions = {
     'https://inventario-cdisfruta.netlify.app', // producción
     'http://localhost:5173'                     // desarrollo local
   ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };  

@@ -10,8 +10,8 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'pruebasCdisfruta@gmail.com',
-        pass: 'oxdlbhjcrqpfziuj' // Contraseña de aplicación
+        user: 'pruebascdisfruta2025@gmail.com',
+        pass: 'hevhablpduxipync' // Contraseña de aplicación
       }
     });
 

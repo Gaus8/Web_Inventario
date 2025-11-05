@@ -13,8 +13,8 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
       port: 587,
       secure: false, // true para 465, false para 587
       auth: {
-        user: process.env.EMAI_USER, // Tu email de registro en Brevo
-        pass: process.env.BREVO_SMTP_PASSWORD // Tu contraseña SMTP de Brevo
+        user: process.env.EMAIL_USER, //"pruebascdisfruta2025@gmail.com" Tu email de registro en Brevo
+        pass: process.env.BREVO_SMTP_KEY // Tu contraseña SMTP de Brevo
       }
     });
 

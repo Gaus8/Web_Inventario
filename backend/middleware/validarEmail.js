@@ -10,35 +10,35 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
       auth: {
-        user: 'pruebasCdisfruta@gmail.com',
-        pass: 'oxdlbhjcrqpfziuj' // Contraseña de aplicación
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASSWORD
       }
     });
 
-    const verificationUrlRender = `https://inventario-cdisfruta.netlify.app/validacion/${token}`;
-    const verificationUrlLocal = `http://localhost:5173/validacion/${token}`;
+    const verificationUrl = `https://inventario-cdisfruta.netlify.app/validacion/${token}`
+     
 
     const mailOptions = {
-      from: '"SIECU - Plataforma gestionada a CDISFRUTA" <pruebasCdisfruta@gmail.com>',
+      from:'"SIECU - Plataforma gestionada a CDISFRUTA" <pruebasCdisfruta@gmail.com>',
       to: usuario.email,
       subject: 'Confirmación de correo electrónico - Registro en CDISFRUTA',
       html: `
         <p>Estimado(a) ${usuario.name}</p>
         <p>Gracias por registrarse en <b>SIECU</b>.</p>
         <p>Para completar su proceso de registro y activar su cuenta, haga clic en el siguiente enlace:</p>
-        <a href="${verificationUrlRender}">${verificationUrlRender}</a>
+        <a href="${verificationUrl}">${verificationUrl}</a>
         <p>Si usted no realizó este registro, puede ignorar este mensaje.</p>
         <br>
         <p><b>Equipo de Soporte – SIECU</b></p>
       `
     };
 
-    // Enviar correo
     await transporter.sendMail(mailOptions);
     console.log(`📩 Correo de verificación enviado a ${usuario.email}`);
 
   } catch (error) {
     console.error("❌ Error al enviar correo de verificación:", error.message);
-    // No lanzamos error para no romper el flujo del registro
+    // Puedes agregar más logging para debugging
+    console.error("Error details:", error);
   }
 };

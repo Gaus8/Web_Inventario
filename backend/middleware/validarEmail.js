@@ -18,9 +18,7 @@ export const enviarCorreoVerificacion = async (usuario, token) => {
       }
     });
 
-    const verificationUrl = process.env.NODE_ENV === 'production' 
-      ? `https://inventario-cdisfruta.netlify.app/validacion/${token}`
-      : `http://localhost:5173/validacion/${token}`;
+    const verificationUrl =`https://inventario-cdisfruta.netlify.app/validacion/${token}`
 
     const mailOptions = {
       from: '"SIECU - CDISFRUTA" <contact@brevo.com>', // Usa un dominio de Brevo

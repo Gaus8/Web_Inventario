@@ -2,9 +2,6 @@ import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 import 'dotenv/config'
 
-import crypto from 'crypto';
-import nodemailer from 'nodemailer';
-
 export const generarTokenVerificacion = () => {
   return crypto.randomBytes(32).toString('hex');
 };

@@ -6,6 +6,7 @@ import jwt from 'jsonwebtoken';
 
 export const registerUser = async (req, res) => {
   const validar = validateRegisterUser(req.body);
+
   if (validar.error) {
     return res.status(400).json({
       status: 'error',
@@ -16,20 +17,32 @@ export const registerUser = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(validar.data.password, 10);
     const token = generarTokenVerificacion();
+
     const newUser = {
       name: validar.data.name,
       email: validar.data.email,
       password: hashedPassword,
+      verified: false,
       verificationToken: token
     };
 
-    const sendMessage = await createUser(newUser);
-    await enviarCorreoVerificacion(newUser, token);
+    const createdUser = await createUser(newUser);
+
+    try {
+      // Enviar correo después de crear usuario
+      await enviarCorreoVerificacion(newUser, token);
+    } catch (emailError) {
+      // Si falla el correo, eliminar usuario creado
+      await User.deleteOne({ email: newUser.email });
+      throw new Error('Error enviando correo de verificación');
+    }
+
     res.status(201).json({
       status: 'success',
-      message: sendMessage,
+      message: createdUser,
       name: newUser.name
     });
+
   } catch (error) {
     res.status(400).json({
       status: 'error',

@@ -22,10 +22,13 @@ const app = express();
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(express.json());
+
 app.use('/api', routerRegister);
 app.use('/api', routerProducts);
 
-
+app.get('/',(req,res) =>{
+  res.send("El servidor esta funcionando")
+})
 app.post('/api/logout', (req, res) => {
   res.clearCookie('access_token');
   res.status(200).json({ message: 'Sesión cerrada' });
